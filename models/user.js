@@ -1,12 +1,12 @@
 'use strict';
 import pkg from 'sequelize';
 import database from "../config/db.js";
+import { UsersAppointments } from './usersappointments.js';
 
-const { Model, DataTypes, NOW } = pkg;
+const { Model, DataTypes } = pkg;
 
 export class Users extends Model {
   static associate(models) {
-    // define association here
   }
 };
 
@@ -43,4 +43,4 @@ Users.init({
   sequelize: database
 });
 
-// Users.hasMany(UsersAppointments, { foreignKey: 'UsersAppointmentsId'})
+Users.hasMany(UsersAppointments, { foreignKey: 'UsersAppointmentsId'});
