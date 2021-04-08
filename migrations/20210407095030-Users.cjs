@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
         unique: true
       },
-      userName: {
+      name: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true
@@ -25,6 +25,14 @@ module.exports = {
       role: {
         type: Sequelize.ENUM(['client', 'admin']),
         defaultValue: 'client'
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       }
     });
   },
