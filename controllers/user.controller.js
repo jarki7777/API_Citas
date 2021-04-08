@@ -5,9 +5,10 @@ export const userController = {
         try {
             const newUser = {
                 email: req.headers.email,
-                userName: req.headers.username,
+                name: req.headers.name,
                 password: req.headers.password,
-                age: req.headers.age
+                createdAt: req.headers.createdAt,
+                updatedAt: req.headers.updatedAt
             }
             await Users.create(newUser)
             res.sendStatus(201);
