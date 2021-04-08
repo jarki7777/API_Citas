@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "5h#E>*qE$+",
-    "database": "API_Rest",
+    "password": "marianella",
+    "database": "API_Citas",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
