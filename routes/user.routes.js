@@ -8,6 +8,6 @@ const userRoutes = Router();
 
 userRoutes.post('/signup', userController.create);
 
-userRoutes.get('/dashboard', userController.dashboard);
+userRoutes.get('/dashboard/:id', userController.dashboard);
 
 export default userRoutes;

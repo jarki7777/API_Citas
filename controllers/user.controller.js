@@ -1,4 +1,4 @@
-import { Users, Doctors, Appointments } from '../models/index.js'
+import { Users, Appointments, Doctors } from '../models/index.js'
 
 export const userController = {
     create: async (req, res) => {
@@ -18,10 +18,10 @@ export const userController = {
         }
     },
     dashboard: async (req, res) => {
-        const user = req.body.email
+        const user = req.params.id
         try {
             const dashboard = await Users.findOne({
-                where: { email: user },
+                where: { id: user },
                 include: [
                     {
                         model: Appointments

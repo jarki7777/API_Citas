@@ -7,8 +7,4 @@ Users.hasMany(Appointments, { foreignKey: 'usersId' });
 
 Doctors.hasMany(Appointments, { foreignKey: 'doctorsId' });
 
-Appointments.belongsTo(Users);
-
-Appointments.belongsTo(Doctors);
-
 export { Users, Doctors, Appointments }
