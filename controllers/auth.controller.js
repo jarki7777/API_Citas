@@ -28,4 +28,7 @@ export const authController = {
             }
         }
     },
+    logout: async (req, res) => {
+        res.sendStatus(200);
+    }
 };
