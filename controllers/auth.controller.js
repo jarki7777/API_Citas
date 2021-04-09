@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import Users from '../models/user.model.js';
+import Users from '../models/users.model.js';
 
 export const jwtController = {
     authenticate: async (req, res) => {
@@ -8,7 +8,7 @@ export const jwtController = {
                 email: req.headers.email,
                 password: req.headers.password
             }
-            // const checkUser = await Users.findOne({ email: data.email });
+            const checkUser = await Users.findOne({ email: data.email });
             if (checkUser && checkUser.email === data.email && checkUser.password === data.password) {                
                 const jwtPayload = {
                     email: req.headers.email

@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Appointments', {
-      appointmentsId: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -17,10 +17,23 @@ module.exports = {
       },
       status: {
         type: Sequelize.ENUM(['pending', 'canceled', 'done', 'missed']),
-        defaultValue:'pending'
+        defaultValue: 'pending'
       },
-      usersAppointments: {
-        type: Sequelize.INTEGER
+      usersId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id'
+        }
+      },
+      doctorsId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Doctors',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
