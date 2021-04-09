@@ -1,14 +1,10 @@
 'use strict';
 import pkg from 'sequelize';
-import database  from "../config/db.js";
+import database from '../config/db.js';
 
 const { Model, DataTypes } = pkg;
 
-export class Users extends Model {
-  static associate(models) {
-    // define association here
-  }
-};
+export class Users extends Model { };
 
 Users.init({
   email: {
@@ -16,7 +12,7 @@ Users.init({
     allowNull: false,
     unique: true
   },
-  userName: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false,
     unique: true
@@ -28,9 +24,17 @@ Users.init({
   role: {
     type: DataTypes.ENUM(['client', 'admin']),
     defaultValue: 'client'
+  },
+  createdAt: {
+    allowNull: false,
+    type: DataTypes.DATE
+  },
+  updatedAt: {
+    allowNull: false,
+    type: DataTypes.DATE
   }
-
-}, {
-  modelName: "Users",
-  sequelize: database
-});
+},
+  {
+    modelName: "Users",
+    sequelize: database
+  });
