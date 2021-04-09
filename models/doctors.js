@@ -1,6 +1,6 @@
 'use strict';
 import pkg from 'sequelize';
-import database from "../config/db.js";
+import database from '../config/db.js';
 
 const { Model, DataTypes } = pkg;
 
@@ -13,9 +13,10 @@ Doctors.init({
   },
   speciality: {
     type: DataTypes.STRING,
-  allowNull: false}
+    allowNull: false
+  }
 },
   {
-    modelName: "Doctors",
+    modelName: 'Doctors',
     sequelize: database
   });
