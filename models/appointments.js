@@ -38,6 +38,6 @@ Appointments.init({
   }
 },
   {
-    sequelize: database,
     modelName: 'Appointments',
+    sequelize: database,
   });
