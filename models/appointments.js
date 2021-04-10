@@ -35,6 +35,14 @@ Appointments.init({
       model: 'Doctors',
       key: 'id'
     }
+  },
+  createdAt: {
+    allowNull: false,
+    type: DataTypes.DATE
+  },
+  updatedAt: {
+    allowNull: false,
+    type: DataTypes.DATE
   }
 },
   {

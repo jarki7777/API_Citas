@@ -1,6 +1,9 @@
-import { Appointments } from '../models/appointments.js';
-import { Users } from '../models/users.js';
-import { Doctors } from '../models/doctors.js';
+import { Users, Appointments, Doctors } from '../models/index.js';
+import pkg from 'sequelize';
+
+const { Op } = pkg;
+
+
 
 export const appointmentsController = {
     newApptts: async (req, res) => {
@@ -23,19 +26,22 @@ export const appointmentsController = {
     },
 
     appttsStts: async (req, res) => {
+        
         try {
-            const appttsStatus = await Appointments.find({
+            const appttsStatus = await Appointments.findAll({
+                where: {
+                    date: {
+                        [Op.gte]: Date.now()
+                    }
+                },
                 include: [
                     {
-                        model: Appointments
+                        model: Users
                     }
                 ], attributes: ['date', 'time', 'status']
-            })
-                if (appttsStatus.date >= Date.now()) {
-                    res.status(200).send(appttsStatus)
-                } else if (appttsStatus.date < Date.now()) {
-                    res.status(200).send(appttsStatus.status['missed'])
-                } else {res.status(200).send(appttsStatus.status['canceled'])}
+            });
+            res.status(200).send(appttsStatus)
+
         } catch (e) {
             console.log(e);
             res.status(400).send({ message: e.message });
