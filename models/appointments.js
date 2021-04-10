@@ -7,7 +7,7 @@ const { Model, DataTypes } = pkg;
 export class Appointments extends Model { };
 Appointments.init({
   date: {
-    type: DataTypes.DATE,
+    type: DataTypes.DATEONLY,
     allowNull: false
   },
 
@@ -35,6 +35,14 @@ Appointments.init({
       model: 'Doctors',
       key: 'id'
     }
+  },
+  createdAt: {
+    allowNull: false,
+    type: DataTypes.DATE
+  },
+  updatedAt: {
+    allowNull: false,
+    type: DataTypes.DATE
   }
 },
   {
