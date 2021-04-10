@@ -7,7 +7,7 @@ const { Model, DataTypes } = pkg;
 export class Appointments extends Model { };
 Appointments.init({
   date: {
-    type: DataTypes.DATE,
+    type: DataTypes.DATEONLY,
     allowNull: false
   },
 
