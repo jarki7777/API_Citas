@@ -36,7 +36,12 @@ export const appointmentsController = {
                 },
                 include: [
                     {
-                        model: Users
+                        model: Users,
+                        attributes: ['email', 'name']
+                    },
+                    {
+                        model: Doctors,
+                        attributes: ['name', 'speciality']
                     }
                 ], attributes: ['date', 'time', 'status']
             });

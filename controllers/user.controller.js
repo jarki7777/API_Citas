@@ -1,4 +1,4 @@
-import { Users, Appointments, Doctors } from '../models/index.js';
+import { Users, Appointments } from '../models/index.js';
 import jwt from 'jsonwebtoken';
 
 export const userController = {
