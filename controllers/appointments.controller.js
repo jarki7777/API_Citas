@@ -60,7 +60,6 @@ export const appointmentsController = {
                 ], attributes: ['date', 'status']
             });
             res.status(200).send(appttsStatus)
-
         } catch (e) {
             console.log(e);
             res.status(400).send({ message: e.message });

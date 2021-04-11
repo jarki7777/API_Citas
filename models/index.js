@@ -11,4 +11,5 @@ Appointments.belongsTo(Users, { foreignKey: 'usersId' });
 
 Appointments.belongsTo(Doctors, { foreignKey: 'DoctorsId' });
 
+
 export { Users, Doctors, Appointments }
