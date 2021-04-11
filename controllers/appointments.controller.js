@@ -25,6 +25,7 @@ export const appointmentsController = {
     },
 
     appttsStts: async (req, res) => {
+        
         try {
             const appttsStatus = await Appointments.findAll({
                 where: {
@@ -34,12 +35,16 @@ export const appointmentsController = {
                 },
                 include: [
                     {
-                        model: Users
+                        model: Users,
+                        attributes: ['email', 'name']
+                    },
+                    {
+                        model: Doctors,
+                        attributes: ['name', 'speciality']
                     }
                 ], attributes: ['date', 'time', 'status']
-            }); 
-            res.status(200).send(appttsStatus);
-
+            });
+            res.status(200).send(appttsStatus)
         } catch (e) {
             console.log(e);
             res.status(400).send({ message: e.message });
