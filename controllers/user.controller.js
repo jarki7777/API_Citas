@@ -19,10 +19,10 @@ export const userController = {
         }
     },
     dashboard: async (req, res) => {
-        const user = jwt.decode(req.headers.authentication)
+        const user = req.params.id
         try {
             const dashboard = await Users.findOne({
-                where: { id: user.id },
+                where: { id: user },
                 include: [
                     {
                         model: Appointments
