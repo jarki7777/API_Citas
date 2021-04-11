@@ -1,4 +1,4 @@
-import { Users, Appointments } from '../models/index.js';
+import { Users, Appointments, Doctors } from '../models/index.js';
 import jwt from 'jsonwebtoken';
 
 export const userController = {
@@ -25,7 +25,14 @@ export const userController = {
                 where: { id: user.id },
                 include: [
                     {
-                        model: Appointments
+                        model: Appointments,
+                        attributes: ['id', 'date', 'status'],
+                        include: [
+                            {
+                                model: Doctors,
+                                attributes: ['name', 'speciality']
+                            }
+                        ]
                     }
                 ],
                 attributes: ['email', 'name']
