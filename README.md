@@ -74,7 +74,6 @@ You can now start making requests using your API rest development platform.
                 └───seeders
 #
 
-
 ## Authentication
 New users will have to signup in order to access the service endpoints.
 
