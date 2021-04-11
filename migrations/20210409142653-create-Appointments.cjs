@@ -10,10 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       date: {
-        type: Sequelize.DATEONLY
-      },
-      time: {
-        type: Sequelize.TIME
+        type: Sequelize.DATE
       },
       status: {
         type: Sequelize.ENUM(['pending', 'canceled', 'done', 'missed']),

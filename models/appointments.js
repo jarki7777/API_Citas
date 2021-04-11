@@ -7,15 +7,9 @@ const { Model, DataTypes } = pkg;
 export class Appointments extends Model { };
 Appointments.init({
   date: {
-    type: DataTypes.DATEONLY,
+    type: DataTypes.DATE,
     allowNull: false
   },
-
-  time: {
-    type: DataTypes.TIME,
-    allowNull: false
-  },
-
   status: {
     type: DataTypes.ENUM(['pending', 'canceled', 'done', 'missed']),
     defaultValue: 'pending'

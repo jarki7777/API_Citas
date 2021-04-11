@@ -27,7 +27,8 @@ export const userController = {
                     {
                         model: Appointments
                     }
-                ]
+                ],
+                attributes: ['email', 'name']
             });
             res.status(200).send(dashboard)
         } catch (e) {
