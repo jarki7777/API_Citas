@@ -3,8 +3,6 @@ import pkg from 'sequelize';
 
 const { Op } = pkg;
 
-
-
 export const appointmentsController = {
     newApptts: async (req, res) => {
         try {
@@ -19,6 +17,7 @@ export const appointmentsController = {
             }
             await Appointments.create(newAppointments)
             res.sendStatus(201);
+
         } catch (e) {
             console.log(e);
             res.status(400).send({ message: e.message });
@@ -46,7 +45,6 @@ export const appointmentsController = {
                 ], attributes: ['date', 'time', 'status']
             });
             res.status(200).send(appttsStatus)
-
         } catch (e) {
             console.log(e);
             res.status(400).send({ message: e.message });
