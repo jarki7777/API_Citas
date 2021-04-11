@@ -73,7 +73,7 @@ export const appointmentsController = {
             await Appointments.update(
                 { status: 'canceled' },
                 {
-                    where: { id: appointment }
+                    where: { id: appointment}
                 }
             );
             res.status(200).send('Appointment canceled')
