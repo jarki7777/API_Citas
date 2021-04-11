@@ -1,4 +1,5 @@
-import { Users, Appointments, Doctors } from '../models/index.js'
+import { Users, Appointments, Doctors } from '../models/index.js';
+import jwt from 'jsonwebtoken';
 
 export const userController = {
     create: async (req, res) => {
@@ -18,15 +19,23 @@ export const userController = {
         }
     },
     dashboard: async (req, res) => {
-        const user = req.params.id
+        const user = jwt.decode(req.headers.authentication);
         try {
             const dashboard = await Users.findOne({
-                where: { id: user },
+                where: { id: user.id },
                 include: [
                     {
-                        model: Appointments
+                        model: Appointments,
+                        attributes: ['id', 'date', 'status'],
+                        include: [
+                            {
+                                model: Doctors,
+                                attributes: ['name', 'speciality']
+                            }
+                        ]
                     }
-                ]
+                ],
+                attributes: ['email', 'name']
             });
             res.status(200).send(dashboard)
         } catch (e) {

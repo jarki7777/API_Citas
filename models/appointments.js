@@ -10,12 +10,6 @@ Appointments.init({
     type: DataTypes.DATE,
     allowNull: false
   },
-
-  time: {
-    type: DataTypes.TIME,
-    allowNull: false
-  },
-
   status: {
     type: DataTypes.ENUM(['pending', 'canceled', 'done', 'missed']),
     defaultValue: 'pending'
@@ -35,9 +29,17 @@ Appointments.init({
       model: 'Doctors',
       key: 'id'
     }
+  },
+  createdAt: {
+    allowNull: false,
+    type: DataTypes.DATE
+  },
+  updatedAt: {
+    allowNull: false,
+    type: DataTypes.DATE
   }
 },
   {
-    sequelize: database,
     modelName: 'Appointments',
+    sequelize: database,
   });

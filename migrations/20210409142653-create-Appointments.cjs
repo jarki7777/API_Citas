@@ -12,9 +12,6 @@ module.exports = {
       date: {
         type: Sequelize.DATE
       },
-      time: {
-        type: Sequelize.TIME
-      },
       status: {
         type: Sequelize.ENUM(['pending', 'canceled', 'done', 'missed']),
         defaultValue: 'pending'
