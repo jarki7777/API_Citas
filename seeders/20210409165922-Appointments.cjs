@@ -10,7 +10,7 @@ module.exports = {
           date: '2021/04/15',
           time: '14:00:00',
           status:'pending',
-          usersId:2,
+          usersId:1,
           doctorsId:2,
           createdAt: '2021/04/01',
           updatedAt: '2021/04/01'
