@@ -1,9 +1,4 @@
 import { Users, Appointments, Doctors } from '../models/index.js';
-import pkg from 'sequelize';
-
-const { Op } = pkg;
-
-
 
 export const appointmentsController = {
     newApptts: async (req, res) => {
@@ -23,7 +18,7 @@ export const appointmentsController = {
                     doctorsId: newAppointment.doctorsId
                 }
             });
-            
+
             const appointmentClientExist = await Appointments.findOne({
                 where: {
                     date: newAppointment.date,
@@ -34,7 +29,7 @@ export const appointmentsController = {
             if (appointmentDoctorExist && appointmentDoctorExist.status === 'pending') {
                 res.status(400).send('Doctor is busy at that time, please select a different time or doctor');
             } else if (appointmentClientExist) {
-                res.status(400).send('Client already has an appointment at that time');                
+                res.status(400).send('Client already has an appointment at that time');
             } else {
                 await Appointments.create(newAppointment);
                 res.sendStatus(201);
@@ -74,13 +69,19 @@ export const appointmentsController = {
 
     appttsDlt: async (req, res) => {
         try {
-            const appttsDlt = await Appointments.findByIdAndDelete(req.params.id)
-            res.sendStatus(200).send(appttsDlt)
+            const appointment = req.params.id
+            await Appointments.update(
+                { status: 'canceled' },
+                {
+                    where: { id: appointment }
+                }
+            );
+            res.status(200).send('Appointment canceled')
         } catch (e) {
             console.log(e);
             res.status(400).send({ message: e.message });
         }
-    },
+    }
 }
 
 
