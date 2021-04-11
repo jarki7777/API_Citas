@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { jwtController } from '../controllers/auth.controller.js';
+import { authController } from '../controllers/auth.controller.js';
 
-const jwtRoutes = Router();
+const authRoutes = Router();
 
-jwtRoutes.post('/', jwtController.authenticate);
+authRoutes.get('/logout', authController.logout);
 
-export default jwtRoutes;
+export default authRoutes; 
