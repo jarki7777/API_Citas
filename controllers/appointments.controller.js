@@ -27,9 +27,9 @@ export const appointmentsController = {
             });
 
             if (appointmentDoctorExist && appointmentDoctorExist.status === 'pending') {
-                res.status(400).send('Doctor is busy at that time, please select a different time or doctor');
+                res.status(400).send({'message': 'Doctor is busy at that time, please select a different time or doctor', 'code': 3});
             } else if (appointmentClientExist) {
-                res.status(400).send('Client already has an appointment at that time');
+                res.status(400).send({'message': 'Client already has an appointment at that time', 'code': 4});
             } else {
                 await Appointments.create(newAppointment);
                 res.sendStatus(201);
