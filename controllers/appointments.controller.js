@@ -44,7 +44,7 @@ export const appointmentsController = {
     appttsStts: async (req, res) => {
 
         try {
-            const appttsStatus = await Appointments.findAll({
+            const appttsStatus = await Appointments.findAndCountAll({
                 where: {
                     status: 'pending'
                 },
