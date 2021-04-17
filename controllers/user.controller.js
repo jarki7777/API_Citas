@@ -21,7 +21,7 @@ export const userController = {
     dashboard: async (req, res) => {
         const user = jwt.decode(req.headers.authentication);
         try {
-            const dashboard = await Users.findOne({
+            const dashboard = await Users.findAndCountAll({
                 where: { id: user.id },
                 include: [
                     {
