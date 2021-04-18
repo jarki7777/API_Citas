@@ -57,7 +57,7 @@ export const appointmentsController = {
                         model: Doctors,
                         attributes: ['name', 'speciality']
                     }
-                ], attributes: ['date', 'status']
+                ], attributes: ['id', 'date', 'status']
             });
             res.status(200).send(appttsStatus)
         } catch (e) {
