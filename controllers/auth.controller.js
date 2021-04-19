@@ -12,10 +12,11 @@ export const authController = {
             if (checkUser && checkUser.email === data.email && checkUser.password === data.password) {                
                 const jwtPayload = {
                     email: req.headers.email,
-                    id: checkUser.id
+                    id: checkUser.id,
+                    role: checkUser.role
                 }                
                 const token = jwt.sign(jwtPayload, process.env.SECRET);
-                res.status(200).json({ token, id: checkUser.id });
+                res.status(200).json({ token });
             } else {
                 res.status(404).send({ message: 'the email-password combination does not exist'});
             }
