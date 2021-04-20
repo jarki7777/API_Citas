@@ -45,8 +45,7 @@ export const userController = {
     },
     userList: async (req, res) => {
         try {
-            const list = await Users.findOne({
-                where: { email: req.body.email },
+            const list = await Users.findAll({
                 attributes: ['email', 'name']
             });
 
@@ -60,8 +59,7 @@ export const userController = {
     doctorList: async (req, res) => {
         try {
             console.log(req.body.name)
-            const list = await Doctors.findOne({
-                where: { name: req.body.name },
+            const list = await Doctors.findAll({
                 attributes: ['name', 'speciality']
             });
 

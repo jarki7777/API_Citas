@@ -10,8 +10,8 @@ userRoutes.post('/signup', userController.create);
 
 userRoutes.get('/dashboard', checkJwt, userController.dashboard);
 
-userRoutes.post('/list', checkJwt, checkRole, userController.userList);
+userRoutes.get('/list', checkJwt, checkRole, userController.userList);
 
-userRoutes.post('/doctors', checkJwt, checkRole, userController.doctorList);
+userRoutes.get('/doctors', checkJwt, checkRole, userController.doctorList);
 
 export default userRoutes;
