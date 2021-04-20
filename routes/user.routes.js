@@ -12,4 +12,6 @@ userRoutes.get('/dashboard', checkJwt, userController.dashboard);
 
 userRoutes.post('/list', checkJwt, checkRole, userController.userList);
 
+userRoutes.post('/doctors', checkJwt, checkRole, userController.doctorList);
+
 export default userRoutes;

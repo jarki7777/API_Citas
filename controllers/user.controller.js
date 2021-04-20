@@ -45,13 +45,27 @@ export const userController = {
     },
     userList: async (req, res) => {
         try {
-            console.log('asdasd')
             const list = await Users.findOne({
                 where: { email: req.body.email },
                 attributes: ['email', 'name']
             });
 
-            res.status(200).send({ "email" : list})
+            res.status(200).send({ "client" : list})
+            
+        } catch(e) {
+            console.log(e);
+            res.status(400).send({ message: e.message });
+        }
+    },
+    doctorList: async (req, res) => {
+        try {
+            console.log(req.body.name)
+            const list = await Doctors.findOne({
+                where: { name: req.body.name },
+                attributes: ['name', 'speciality']
+            });
+
+            res.status(200).send({ "doctors" : list})
             
         } catch(e) {
             console.log(e);
