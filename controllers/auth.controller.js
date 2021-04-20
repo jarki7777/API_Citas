@@ -16,7 +16,8 @@ export const authController = {
                     role: checkUser.role
                 }                
                 const token = jwt.sign(jwtPayload, process.env.SECRET);
-                res.status(200).json({ token, id: checkUser.id });
+                res.status(200).json({ token, id: checkUser.id, role: checkUser.role});
+                // The response shouldn't include the role, only the payload, but for the case we're returning also the role
             } else {
                 res.status(404).send({ message: 'the email-password combination does not exist'});
             }

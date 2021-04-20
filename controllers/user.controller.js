@@ -42,5 +42,20 @@ export const userController = {
             console.log(e);
             res.status(400).send({ message: e.message });
         }
+    },
+    userList: async (req, res) => {
+        try {
+            console.log('asdasd')
+            const list = await Users.findOne({
+                where: { email: req.body.email },
+                attributes: ['email', 'name']
+            });
+
+            res.status(200).send({ "email" : list})
+            
+        } catch(e) {
+            console.log(e);
+            res.status(400).send({ message: e.message });
+        }
     }
 }
