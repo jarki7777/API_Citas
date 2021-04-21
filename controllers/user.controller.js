@@ -46,7 +46,7 @@ export const userController = {
     userList: async (req, res) => {
         try {
             const list = await Users.findAll({
-                attributes: ['email', 'name']
+                attributes: ['id', 'email', 'name']
             });
 
             res.status(200).send({ "client" : list})
@@ -60,7 +60,7 @@ export const userController = {
         try {
             console.log(req.body.name)
             const list = await Doctors.findAll({
-                attributes: ['name', 'speciality']
+                attributes: ['id', 'name', 'speciality']
             });
 
             res.status(200).send({ "doctors" : list})
